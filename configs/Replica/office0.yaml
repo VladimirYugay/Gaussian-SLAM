@@ -1,0 +1,5 @@
+inherit_from: configs/Replica/replica.yaml
+data:
+  scene_name: office0
+  input_path: data/Replica-SLAM/Replica/office0/
+  output_path: output/Replica/office0/

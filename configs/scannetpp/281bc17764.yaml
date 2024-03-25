@@ -1,0 +1,14 @@
+inherit_from: configs/scannetpp/scannetpp.yaml
+data:
+  input_path: data/scannetpp/data/281bc17764
+  output_path: output/ScanNetPP/281bc17764
+  scene_name: "281bc17764"
+  use_train_split: True
+  frame_limit: 250
+cam:
+  H: 584
+  W: 876
+  fx: 312.79197434640764
+  fy: 313.48022477591036
+  cx: 438.0
+  cy: 292.0

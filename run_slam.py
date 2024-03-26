@@ -49,7 +49,7 @@ def update_config_with_args(config, args):
     if args.track_w_color_loss is not None:
         config["tracking"]["w_color_loss"] = args.track_w_color_loss
     if args.track_iters is not None:
-        config["tracking"]["iterations"] = args.track_iterations
+        config["tracking"]["iterations"] = args.track_iters
     if args.track_filter_alpha:
         config["tracking"]["filter_alpha"] = True
     if args.track_wo_filter_alpha:

@@ -1,0 +1,5 @@
+inherit_from: configs/ScanNet/scannet.yaml
+data:
+  input_path: data/scannet/scans/scene0000_00
+  output_path: output/ScanNet/scene0000
+  scene_name: scene0000_00

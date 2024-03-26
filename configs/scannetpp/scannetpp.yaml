@@ -1,0 +1,37 @@
+project_name: "Gaussian_SLAM_scannetpp"
+dataset_name: "scannetpp"
+checkpoint_path: null
+use_wandb: False
+frame_limit: -1 # set to -1 to disable
+seed: 0
+mapping:
+  new_submap_every: 100
+  map_every: 2
+  iterations: 500
+  new_submap_iterations: 500
+  new_submap_points_num: 400000 
+  new_submap_gradient_points_num: 50000 
+  new_frame_sample_size: 100000 
+  new_points_radius: 0.00000001
+  current_view_opt_iterations: 0.4 # What portion of iterations to spend on the current view
+  alpha_thre: 0.6
+  pruning_thre: 0.5
+  submap_using_motion_heuristic: False
+tracking:
+  gt_camera: False
+  w_color_loss: 0.5
+  iterations: 300
+  cam_rot_lr: 0.002
+  cam_trans_lr: 0.01
+  odometry_type: "const_speed"  # gt, const_speed, odometer
+  help_camera_initialization: True 
+  init_err_ratio: 50
+  odometer_method: "point_to_plane" # hybrid or point_to_plane
+  filter_alpha: True
+  filter_outlier_depth: True
+  alpha_thre: 0.98
+  soft_alpha: False
+  mask_invalid_depth: True
+cam:
+  crop_edge: 0
+  depth_scale: 1000.0

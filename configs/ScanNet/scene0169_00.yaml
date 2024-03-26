@@ -1,0 +1,10 @@
+inherit_from: configs/ScanNet/scannet.yaml
+data:
+  input_path: data/scannet/scans/scene0169_00
+  output_path: output/ScanNet/scene0169
+  scene_name: scene0169_00
+cam: 
+  fx: 574.540771
+  fy: 577.583740
+  cx: 322.522827
+  cy: 238.558853

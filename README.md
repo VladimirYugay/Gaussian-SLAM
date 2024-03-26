@@ -41,7 +41,7 @@ To find the <i>gcc path</i> and <i>g++ path</i> on your machine you can use <i>w
 Then setup environment from the provided conda environment file,
 
 ```
-conda create -f environment.yaml
+conda env create -f environment.yml
 conda activate gslam
 ```
 We tested our code on RTX3090 and RTX A6000 GPUs respectively and Ubuntu22 and CentOS7.5.

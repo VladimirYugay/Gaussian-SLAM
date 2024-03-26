@@ -10,7 +10,7 @@
     ·
     <a href="https://people.inf.ethz.ch/moswald/"><strong>Martin Oswald</strong></a>
   </p>
-  <h3 align="center"><a href="https://spla-tam.github.io">Project Page</a></h3>
+  <h3 align="center"><a href="https://vladimiryugay.github.io/gaussian_slam/">Project Page</a></h3>
   <div align="center"></div>
 </p>
 

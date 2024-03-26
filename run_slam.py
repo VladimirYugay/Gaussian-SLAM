@@ -12,32 +12,32 @@ from src.utils.utils import setup_seed
 
 
 def get_args():
-    parser = argparse.ArgumentParser(
-        description='Arguments to compute the mesh')
-    parser.add_argument('config_path', type=str,
-                        help='Path to the configuration yaml file')
-    parser.add_argument('--input_path', default="")
-    parser.add_argument('--output_path', default="")
-    parser.add_argument('--track_w_color_loss', type=float)
-    parser.add_argument('--track_alpha_thre', type=float)
-    parser.add_argument('--track_iters', type=int)
-    parser.add_argument('--track_filter_alpha', action='store_true')
-    parser.add_argument('--track_filter_outlier', action='store_true')
-    parser.add_argument('--track_wo_filter_alpha', action='store_true')
+    parser = argparse.ArgumentParser(description="Arguments to compute the mesh")
+    parser.add_argument(
+        "config_path", type=str, help="Path to the configuration yaml file"
+    )
+    parser.add_argument("--input_path", default="")
+    parser.add_argument("--output_path", default="")
+    parser.add_argument("--track_w_color_loss", type=float)
+    parser.add_argument("--track_alpha_thre", type=float)
+    parser.add_argument("--track_iters", type=int)
+    parser.add_argument("--track_filter_alpha", action="store_true")
+    parser.add_argument("--track_filter_outlier", action="store_true")
+    parser.add_argument("--track_wo_filter_alpha", action="store_true")
     parser.add_argument("--track_wo_filter_outlier", action="store_true")
     parser.add_argument("--track_cam_trans_lr", type=float)
-    parser.add_argument('--alpha_seeding_thre', type=float)
-    parser.add_argument('--map_every', type=int)
+    parser.add_argument("--alpha_seeding_thre", type=float)
+    parser.add_argument("--map_every", type=int)
     parser.add_argument("--map_iters", type=int)
-    parser.add_argument('--new_submap_every', type=int)
-    parser.add_argument('--project_name', type=str)
-    parser.add_argument('--group_name', type=str)
-    parser.add_argument('--gt_camera', action='store_true')
-    parser.add_argument('--help_camera_initialization', action='store_true')
-    parser.add_argument('--soft_alpha', action='store_true')
-    parser.add_argument('--seed', type=int)
-    parser.add_argument('--submap_using_motion_heuristic', action='store_true')
-    parser.add_argument('--new_submap_points_num', type=int)
+    parser.add_argument("--new_submap_every", type=int)
+    parser.add_argument("--project_name", type=str)
+    parser.add_argument("--group_name", type=str)
+    parser.add_argument("--gt_camera", action="store_true")
+    parser.add_argument("--help_camera_initialization", action="store_true")
+    parser.add_argument("--soft_alpha", action="store_true")
+    parser.add_argument("--seed", type=int)
+    parser.add_argument("--submap_using_motion_heuristic", action="store_true")
+    parser.add_argument("--new_submap_points_num", type=int)
     return parser.parse_args()
 
 
@@ -49,7 +49,7 @@ def update_config_with_args(config, args):
     if args.track_w_color_loss is not None:
         config["tracking"]["w_color_loss"] = args.track_w_color_loss
     if args.track_iters is not None:
-        config["tracking"]["iterations"] = args.track_iterations
+        config["tracking"]["iterations"] = args.track_iters
     if args.track_filter_alpha:
         config["tracking"]["filter_alpha"] = True
     if args.track_wo_filter_alpha:
@@ -90,16 +90,16 @@ if __name__ == "__main__":
     config = load_config(args.config_path)
     config = update_config_with_args(config, args)
 
-    if os.getenv('DISABLE_WANDB') == 'true':
+    if os.getenv("DISABLE_WANDB") == "true":
         config["use_wandb"] = False
     if config["use_wandb"]:
         wandb.init(
             project=config["project_name"],
             config=config,
             dir="/home/yli3/scratch/outputs/slam/wandb",
-            group=config["data"]["scene_name"]
-            if not args.group_name
-            else args.group_name,
+            group=(
+                config["data"]["scene_name"] if not args.group_name else args.group_name
+            ),
             name=f'{config["data"]["scene_name"]}_{time.strftime("%Y%m%d_%H%M%S", time.localtime())}_{str(uuid.uuid4())[:5]}',
         )
         wandb.run.log_code(".", include_fn=lambda path: path.endswith(".py"))
@@ -111,8 +111,11 @@ if __name__ == "__main__":
     evaluator = Evaluator(gslam.output_path, gslam.output_path / "config.yaml")
     evaluator.run()
     if config["use_wandb"]:
-        evals = ["rendering_metrics.json",
-                 "reconstruction_metrics.json", "ate_aligned.json"]
+        evals = [
+            "rendering_metrics.json",
+            "reconstruction_metrics.json",
+            "ate_aligned.json",
+        ]
         log_metrics_to_wandb(evals, gslam.output_path, "Evaluation")
         wandb.finish()
     print("All done.✨")

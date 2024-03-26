@@ -4,12 +4,13 @@
   <p align="center">
     <a href="https://vladimiryugay.github.io/"><strong>Vladimir Yugay</strong></a>
     ·
-    <a href="https://unique1i.github.io/"><strong>Yue Li</strong></a>
+    <a href="https://unique1i.github.io/"><strong>Yue Li*</strong></a>
     ·
     <a href="https://staff.fnwi.uva.nl/th.gevers/"><strong>Theo Gevers</strong></a>
     ·
     <a href="https://people.inf.ethz.ch/moswald/"><strong>Martin Oswald</strong></a>
   </p>
+  <div><small>*Significant contribution<small></div>
   <h3 align="center"><a href="https://vladimiryugay.github.io/gaussian_slam/index.html">Project Page</a></h3>
   <div align="center"></div>
 </p>

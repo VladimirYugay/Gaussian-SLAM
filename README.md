@@ -53,7 +53,7 @@ Here we elaborate on how to load the necessary data, configure Gaussian-SLAM for
 
   <details>
   <summary><b>Downloading the Data</b></summary>
-  We tested our code on Replica, TUM_RGBD, ScanNet, and ScanNet++ datasets. We also provide scripts for downloading Replica nad TUM_RGBD. <br>
+  We tested our code on Replica, TUM_RGBD, ScanNet, and ScanNet++ datasets. We also provide scripts for downloading Replica nad TUM_RGBD. Install git lfs before using the scripts by running "git lfs install". <br>
   For downloading ScanNet, follow the procedure described on <a href="http://www.scan-net.org/">here</a>.<br>
   For downloading ScanNet++, follow the procedure described on <a href="https://kaldir.vc.in.tum.de/scannetpp/">here</a>.<br>
   The config files are named after the sequences that we used for our method.

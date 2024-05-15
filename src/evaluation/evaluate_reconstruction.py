@@ -154,13 +154,13 @@ def calc_2d_metric(
 
         ctr = vis.get_view_control()
         ctr.set_constant_z_far(20)
-        ctr.convert_from_pinhole_camera_parameters(param)
+        ctr.convert_from_pinhole_camera_parameters(param, True)
 
         vis.add_geometry(
             gt_mesh,
             reset_bounding_box=True,
         )
-        ctr.convert_from_pinhole_camera_parameters(param)
+        ctr.convert_from_pinhole_camera_parameters(param, True)
         vis.poll_events()
         vis.update_renderer()
         gt_depth = vis.capture_depth_float_buffer(True)
@@ -174,7 +174,7 @@ def calc_2d_metric(
             rec_mesh,
             reset_bounding_box=True,
         )
-        ctr.convert_from_pinhole_camera_parameters(param)
+        ctr.convert_from_pinhole_camera_parameters(param, True)
         vis.poll_events()
         vis.update_renderer()
         ours_depth = vis.capture_depth_float_buffer(True)

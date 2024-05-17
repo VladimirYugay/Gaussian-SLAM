@@ -68,27 +68,27 @@ def compute_camera_frustum_planes(frustum_corners: np.ndarray) -> torch.Tensor:
         [
             torch.cross(
                 frustum_corners[2] - frustum_corners[0],
-                frustum_corners[1] - frustum_corners[0],
+                frustum_corners[1] - frustum_corners[0]
             ),
             torch.cross(
                 frustum_corners[6] - frustum_corners[4],
-                frustum_corners[5] - frustum_corners[4],
+                frustum_corners[5] - frustum_corners[4]
             ),
             torch.cross(
                 frustum_corners[4] - frustum_corners[0],
-                frustum_corners[2] - frustum_corners[0],
+                frustum_corners[2] - frustum_corners[0]
             ),
             torch.cross(
                 frustum_corners[7] - frustum_corners[3],
-                frustum_corners[1] - frustum_corners[3],
+                frustum_corners[1] - frustum_corners[3]
             ),
             torch.cross(
-                frustum_corners[5] - frustum_corners[1],
-                frustum_corners[3] - frustum_corners[1],
+                frustum_corners[5] - frustum_corners[1], 
+                frustum_corners[0] - frustum_corners[1]
             ),
             torch.cross(
-                frustum_corners[6] - frustum_corners[2],
-                frustum_corners[0] - frustum_corners[2],
+                frustum_corners[6] - frustum_corners[2], 
+                frustum_corners[3] - frustum_corners[2]
             ),
         ]
     )

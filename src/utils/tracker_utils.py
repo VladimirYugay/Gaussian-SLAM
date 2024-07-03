@@ -60,20 +60,14 @@ def transformation_to_quaternion(RT: Union[torch.Tensor, np.ndarray]):
     return tensor
 
 
-def interpolate_poses(poses: np.ndarray) -> np.ndarray:
+def extrapolate_poses(poses: np.ndarray) -> np.ndarray:
     """ Generates an interpolated pose based on the first two poses in the given array.
     Args:
         poses: An array of poses, where each pose is represented by a 4x4 transformation matrix.
     Returns:
         A 4x4 numpy ndarray representing the interpolated transformation matrix.
     """
-    quat_poses = Rotation.from_matrix(poses[:, :3, :3]).as_quat()
-    init_rot = quat_poses[1] + (quat_poses[1] - quat_poses[0])
-    init_trans = poses[1, :3, 3] + (poses[1, :3, 3] - poses[0, :3, 3])
-    init_transformation = np.eye(4)
-    init_transformation[:3, :3] = Rotation.from_quat(init_rot).as_matrix()
-    init_transformation[:3, 3] = init_trans
-    return init_transformation
+    return poses[1, :] @ np.linalg.inv(poses[0, :]) @ poses[1, :]
 
 
 def compute_camera_opt_params(estimate_rel_w2c: np.ndarray) -> tuple:

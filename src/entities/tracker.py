@@ -15,7 +15,7 @@ from src.entities.datasets import BaseDataset
 from src.entities.visual_odometer import VisualOdometer
 from src.utils.gaussian_model_utils import build_rotation
 from src.utils.tracker_utils import (compute_camera_opt_params,
-                                     interpolate_poses, multiply_quaternions,
+                                     extrapolate_poses, multiply_quaternions,
                                      transformation_to_quaternion)
 from src.utils.utils import (get_render_settings, np2torch,
                              render_gaussian_model, torch2np)
@@ -125,7 +125,7 @@ class Tracker(object):
         if self.odometry_type == "gt":
             return gt_c2w
         elif self.odometry_type == "const_speed":
-            init_c2w = interpolate_poses(prev_c2ws[1:])
+            init_c2w = extrapolate_poses(prev_c2ws[1:])
         elif self.odometry_type == "odometer":
             odometer_rel = self.odometer.estimate_rel_pose(image, depth)
             init_c2w = prev_c2ws[-1] @ odometer_rel
